@@ -20,6 +20,14 @@ public class RequestPrams1 extends HttpServlet {
 		System.out.println(req.getMethod());
 		System.out.println(req.getRequestURI());
 		System.out.println(req.getQueryString());
+		String test = req.getParameter("test");
+		String name = req.getParameter("name");
+		
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/plain; charset=utf8");
+		
+		resp.getWriter().print("test: " + test);
+		resp.getWriter().print("name: " + name);
 		
 	}
     
