@@ -26,10 +26,6 @@ public class FormApi1 extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("post요청옴!!");
-		request.setCharacterEncoding("UTF-8");
-		System.out.println(request.getParameter("name"));
-		System.out.println(request.getParameter("phone"));
 		System.out.println(request.getParameter("email"));
 		System.out.println(request.getParameter("address"));
 		System.out.println(request.getParameter("pw"));
