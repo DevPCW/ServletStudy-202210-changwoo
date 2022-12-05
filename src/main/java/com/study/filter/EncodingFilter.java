@@ -21,16 +21,13 @@ public class EncodingFilter extends HttpFilter implements Filter {
 	private static final long serialVersionUID = 1L;
 
 
-	public void destroy() {
-
-	}
+	public void destroy() {}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
 		
 		HttpServletRequest hsr = (HttpServletRequest)request;
 		
-		System.out.println(hsr.getMethod());
 		
 		if(hsr.getMethod().equalsIgnoreCase("POST")) { // 대소문자 구분없이 비교하겠다
 			request.setCharacterEncoding(StandardCharsets.UTF_8.name());
