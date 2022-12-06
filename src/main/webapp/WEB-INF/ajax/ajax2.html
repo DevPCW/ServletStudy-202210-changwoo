@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+	<input type="text" class="address1"> 	 <!-- 부산광역시 -->
+	<input type="text" class="address2">	 <!-- 동래구 -->
+	<input type="text" class="address3"> 	 <!-- 중앙대로 1285번길 -->
+	<button type="button" class="submit-button">전송</button>
+
+	<script type="text/javascript">
+		const submitButton = document.querySelector(".submit-button");
+		submitButton.onclick = () => {
+			const address1 = document.querySelector(".address1");
+			const address2 = document.querySelector(".address2");
+			const address3 = document.querySelector(".address3");
+			
+			
+			
+			let address = {
+					address1: null,
+					address2: null,
+					address3: null
+			};
+			
+			address.address1 = address1.value;
+			address.address2 = address2.value;
+			address.address3 = address3.value;
+			
+			
+			
+			// JSON.stringify();			객체(Object) -> JSON
+			// JSON.parse();				JSON -> 객체(Object)
+			
+			let requestData = {
+				async: false,
+				type: "post",
+				url: "/api/ajax2",
+				data: {
+					jsonData: JSON.stringify(address)
+					},
+				dataType: "text",
+				success: response => {
+					alert("요청 성공!");
+					alert(response);
+
+					let obj = JSON.parse(response);
+				
+					console.log(obj.address1);
+					console.log(obj.address2);
+					console.log(obj.address3);
+				},
+				error: function(response) {
+					alert("요청 실패!");
+				}
+			};
+		
+		$.ajax(requestData);
+			alert("데이터 전송");
+			
+			alert(`
+${address.address1} ${address.address2} ${address.address3}
+`);
+	};
+	</script>
+</body>
+
+</html>
