@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+	<input type="text" class="phone"> 	 <!-- 010 -->
+	<input type="text" class="phone">	 <!-- 4082 -->
+	<input type="text" class="phone"> 	 <!-- 7825 -->
+	<button type="button" class="submit-button">전송</button>
+
+	<script type="text/javascript">
+		const submitButton = document.querySelector(".submit-button");
+		submitButton.onclick = () => {
+			const phones = document.querySelectorAll(".phone");
+			
+			
+			let phoneNumber = {
+					phone1: phones[0].value,
+					phone2: phones[1].value,
+					phone3: phones[2].value
+			};
+
+			
+			$.ajax({
+				async: false,
+				type: "post",
+				url: "/api/ajax3_1",
+				data: {
+					data: JSON.stringify(phoneNumber)
+				},
+				dataType: "json",
+				
+				success: response => {
+					console.log(response);
+				},
+				error: response => {
+					alert("데이터 전송 실패")
+				}
+			});
+	};
+	</script>
+</body>
+
+</html>
